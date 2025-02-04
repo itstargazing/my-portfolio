@@ -132,20 +132,16 @@
        .projects-slider {
     overflow: hidden;
     position: relative;
-    width: 100%;
-    padding: 1rem;
 }
 
 .project-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
     gap: 2rem;
     transition: transform 0.5s ease;
-    width: 100%;
 }
 
 .project-card {
-    width: 100%;
+    min-width: 300px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 2rem;
@@ -191,19 +187,6 @@
     }
     100% {
         box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.1);
-    }
-}
-
-/* Add responsive design for smaller screens */
-@media (max-width: 1200px) {
-    .project-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .project-container {
-        grid-template-columns: 1fr;
     }
 }
         
