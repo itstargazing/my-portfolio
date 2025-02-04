@@ -129,44 +129,65 @@
             font-weight: 700;
         }
 
-       .projects-slider { overflow: hidden; position: relative; } 
-.project-container { display: flex; gap: 2rem; transition: transform 0.5s ease; } 
-.project-card { 
-  min-width: 300px; 
-  background: rgba(255, 255, 255, 0.05); 
-  border-radius: 20px; 
-  padding: 2rem; 
-  backdrop-filter: blur(10px); 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  animation: shine 3s infinite;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
+       .projects-slider {
+    overflow: hidden;
+    position: relative;
 }
+
+.project-container {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+}
+
+.project-card {
+    min-width: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: shine 3s infinite;
+    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
 .project-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(255, 255, 255, 0.03),
-    transparent
-  );
-  transform: rotate(45deg);
-  animation: shine-sweep 3s infinite;
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.03),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: shine-sweep 3s infinite;
 }
+
 @keyframes shine-sweep {
-  0% { transform: translateX(-100%) rotate(45deg); }
-  100% { transform: translateX(100%) rotate(45deg); }
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
 }
+
 @keyframes shine {
-  0% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); }
-  50% { box-shadow: 0 0 25px rgba(255, 255, 255, 0.2); }
-  100% { box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); }
+    0% {
+        box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 50px 15px rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.1);
+    }
 }
         
         .project-card img {
