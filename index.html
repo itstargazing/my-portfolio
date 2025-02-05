@@ -130,7 +130,7 @@
         }
 
        .projects-slider {
-    overflow: hidden;
+    overflow: visible;  /* Changed to visible to allow glow to show */
     position: relative;
 }
 
@@ -147,46 +147,62 @@
     padding: 2rem;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    animation: shine 3s infinite;
-    box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.1);
     position: relative;
+    animation: card-glow 3s infinite;
 }
 
+/* Inner glow effect */
 .project-card::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(255, 255, 255, 0.03),
-        transparent
+    inset: 0;  /* Cover the entire card */
+    border-radius: 20px;  /* Match card's border radius */
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 70%
     );
-    transform: rotate(45deg);
-    animation: shine-sweep 3s infinite;
+    opacity: 0;
+    animation: inner-glow 3s infinite;
 }
 
-@keyframes shine-sweep {
-    0% {
-        transform: translateX(-100%) rotate(45deg);
-    }
-    100% {
-        transform: translateX(100%) rotate(45deg);
-    }
+/* Outer glow effect */
+.project-card::after {
+    content: '';
+    position: absolute;
+    inset: -1px;  /* Slightly larger than the card */
+    border-radius: 21px;  /* Slightly larger than card's border radius */
+    background: rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    animation: outer-glow 3s infinite;
 }
 
-@keyframes shine {
-    0% {
-        box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.1);
+@keyframes card-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     }
     50% {
-        box-shadow: 0 0 50px 15px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
     }
-    100% {
-        box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes inner-glow {
+    0%, 100% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+@keyframes outer-glow {
+    0%, 100% {
+        filter: blur(8px);
+        opacity: 0.5;
+    }
+    50% {
+        filter: blur(12px);
+        opacity: 0.8;
     }
 }
         
